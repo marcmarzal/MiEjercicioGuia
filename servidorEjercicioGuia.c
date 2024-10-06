@@ -6,6 +6,11 @@
 #include <netinet/in.h>
 #include <stdio.h>
 
+///////////////////
+/////////////////////////////
+///
+
+
 int main(int argc, char *argv[])
 {
 	int sock_conn, sock_listen, ret;
@@ -40,14 +45,14 @@ int main(int argc, char *argv[])
 		
 		// Ahora recibimos su peticion
 		ret=read(sock_conn,peticion, sizeof(peticion));
-		printf ("Recibida una petición\n");
+		printf ("Recibida una petici n\n");
 		// Tenemos que a?adirle la marca de fin de string 
 		// para que no escriba lo que hay despues en el buffer
 		peticion[ret]='\0';
 		
 		//Escribimos la peticion en la consola
 		
-		printf ("La petición es: %s\n",peticion);
+		printf ("La petici n es: %s\n",peticion);
 		char *p = strtok(peticion, "/");
 		int codigo =  atoi (p);
 		p = strtok( NULL, "/");
