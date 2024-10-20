@@ -64,7 +64,7 @@ namespace WindowsFormsApplication1
 
 
             }
-            else
+            else if (BotonAlto.Checked)
             {
                 string mensaje = "3/" + nombre.Text + "/" + alturaBox.Text;
                 byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
@@ -117,6 +117,24 @@ namespace WindowsFormsApplication1
 
 
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ServicioBoton_Click(object sender, EventArgs e)
+        {
+            //pedir numero de servicios realizados
+            string mensaje = "4/";
+            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            server.Send(msg);
+
+            byte[] msg2 = new byte[80];
+            server.Receive(msg2);
+            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+            label3.Text = mensaje;
         }
     }
 }
